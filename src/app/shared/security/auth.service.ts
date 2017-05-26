@@ -15,35 +15,38 @@ export class AuthService {
     this.uid$ = afAuth.authState.map(user => user.uid);
   }
 
-  signUp(formData): firebase.Promise<any> {
-    return this.afAuth.auth.createUserWithEmailAndPassword(formData.value.email, formData.value.password)
-      .catch(error => console.log('ERROR @ AuthService#signUp() :', error));
+  signUp(email: string, password: string, callback: any): firebase.Promise<any> {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then(success => callback())
+      .catch(error => callback(error));
   }
 
-  signIn(provider: firebase.auth.AuthProvider): firebase.Promise<any> {
+  signInWithEmailAndPassword(email: string, password: string, callback: any) {
+    return this.afAuth.auth.signInWithEmailAndPassword(email, password)
+      .then(success => callback())
+      .catch(error => callback(error));
+  }
+
+  private signIn(provider: firebase.auth.AuthProvider, callback: any): firebase.Promise<any> {
     return this.afAuth.auth.signInWithPopup(provider)
-      .catch(error => console.log('ERROR @ AuthService#signIn() :', error));
+      .then(success => callback())
+      .catch(error => callback(error));
   }
 
-  signInAnonymously(): firebase.Promise<any> {
-    return this.afAuth.auth.signInAnonymously()
-      .catch(error => console.log('ERROR @ AuthService#signInAnonymously() :', error));
+  signInWithGithub(callback: any): firebase.Promise<any> {
+    return this.signIn(new firebase.auth.GithubAuthProvider(), callback);
   }
 
-  signInWithGithub(): firebase.Promise<any> {
-    return this.signIn(new firebase.auth.GithubAuthProvider());
+  signInWithGoogle(callback: any): firebase.Promise<any> {
+    return this.signIn(new firebase.auth.GoogleAuthProvider(), callback);
   }
 
-  signInWithGoogle(): firebase.Promise<any> {
-    return this.signIn(new firebase.auth.GoogleAuthProvider());
+  signInWithTwitter(callback: any): firebase.Promise<any> {
+    return this.signIn(new firebase.auth.TwitterAuthProvider(), callback);
   }
 
-  signInWithTwitter(): firebase.Promise<any> {
-    return this.signIn(new firebase.auth.TwitterAuthProvider());
-  }
-
-  signInWithFacebook(): firebase.Promise<any> {
-    return this.signIn(new firebase.auth.FacebookAuthProvider());
+  signInWithFacebook(callback: any): firebase.Promise<any> {
+    return this.signIn(new firebase.auth.FacebookAuthProvider(), callback);
   }
 
   signOut(): void {
@@ -56,7 +59,27 @@ export class AuthService {
       .catch(error => callback(error));
   }
 
-  readUser() {
-    return this.afAuth.auth;
+  readUser(): Observable<firebase.User> {
+    return this.afAuth.authState;
+  }
+
+  updateUser(formData, callback: any) {
+    return this.afAuth.authState.subscribe(authState => {
+      authState.updateEmail(formData.value.email).then(success => {
+        return authState.updateProfile({
+          displayName: formData.value.displayName,
+          photoURL: ''
+        });
+      }, callback())
+        .catch(error => callback(error));
+    });
+  }
+
+  deleteUser(callback: any) {
+    return this.afAuth.authState.subscribe(authState => {
+      authState.delete()
+        .then(success => callback())
+        .catch(error => callback(error));
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './shared/security/auth.guard';
 import { IndexComponent } from './index/index.component';
@@ -28,8 +28,4 @@ const routes: Routes = [
   { path: 'watch-later', component: WatchLaterComponent, canActivate: [AuthGuard] }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const AppRouterModule: ModuleWithProviders = RouterModule.forRoot(routes);

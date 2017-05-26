@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { Router } from '@angular/router';
-import { TranslateService } from 'ng2-translate';
+import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './shared/security/auth.service';
 import { MovieService } from './shared/service/movie.service';
 
