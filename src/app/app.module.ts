@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, Http } from '@angular/http';
 import { MaterialModule } from '@angular/material';
+import { AngularFireModule } from 'angularfire2';
+
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 
@@ -14,7 +17,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule
+    MaterialModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [],
   bootstrap: [AppComponent]
