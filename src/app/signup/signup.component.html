@@ -10,7 +10,7 @@
     <md-input-container>
       <input mdInput type="password" formControlName="password" name="password" (ngModel)="password" placeholder="{{'signUp.mdp' | translate}}">
     </md-input-container>
-    <button md-raised-button color="primary" type="submit" [disabled]="!formData.valid">{{'signUp.btn-send' | translate}}</button>
+    <button md-raised-button color="primary" type="submit" [disabled]="!myForm.valid">{{'signUp.btn-send' | translate}}</button>
   </md-card>
 </form>
 <h2>{{'signUp.subtitle' | translate}}</h2>
