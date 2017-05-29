@@ -24,11 +24,12 @@ button.app-icon-button {
     outline: none;
     background: transparent;
 }
-h1,
-h2,
-h3 {
-    font-weight: 100;
+h1, h2, h3, h4 {
+  color: inherit;
+    font-weight: 400;
+    text-align: center;
 }
+
 iframe {
     width: 100%;
     max-height: 315px;
