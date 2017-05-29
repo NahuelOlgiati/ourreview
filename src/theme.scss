@@ -1,0 +1,79 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+$warn:    mat-palette($mat-red);
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@include angular-material-theme($theme);
+
+.mat-dialog-container {
+    height: 200px !important;
+}
+button.md-simple-snackbar-action {
+    color: #00796b !important;
+}
+.mat-sidenav-container {
+  background-color: #222b31 !important;
+}
+md-card > md-card-actions:last-child {
+    margin-bottom: 0 !important;
+}
+md-card {
+    margin: 10px 0;
+}
+md-card-title,
+md-card-content {
+    text-align: left;
+}
+[md-card-image] {
+    width: calc(100% + 20px) !important;
+}
+.md-movies {
+    font-size: 32px;
+    vertical-align: middle;
+}
+.md-green {
+    color: #4caf50;
+}
+.md-orange {
+    color: rgb(255, 87, 34);
+}
+.md-red {
+    color: #f44336;
+}
+.md-yellow {
+    color: #ffc107;
+}
+.md-teal {
+    color: #009688;
+}
+.mat-icon {
+    vertical-align: middle;
+}
+md-input-container {
+    margin-right: 15px;
+}
+md-slide-toggle {
+    padding: 8px 24px;
+}
+md-slide-toggle input {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    text-transform: none;
+    border: 0;
+}
+@media screen and (max-width: 480px) {
+    md-checkbox,
+    md-input-container {
+        display: block !important;
+        margin: 40px 0;
+    }
+}

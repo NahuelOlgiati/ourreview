@@ -10,7 +10,8 @@ import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'movie-component',
-  templateUrl: './movie.component.html'
+  templateUrl: './movie.component.html',
+  styleUrls: ['./movie.component.scss']
 })
 export class MovieComponent implements OnInit {
   movie: any[];

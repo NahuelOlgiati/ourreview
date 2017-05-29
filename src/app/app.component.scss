@@ -1,3 +1,38 @@
 .active {
     color: rgb(255, 87, 34) !important;
 }
+.app-content {
+    margin: 1rem;
+    text-align: center;
+}
+#navigation {
+    ul {
+        margin: 0;
+        padding-left: 0;
+        list-style: none;
+        text-align: left;
+    }
+    ul > li:first-child:hover {
+        background: transparent !important;
+    }
+    ul > li:last-child:hover {
+        background: transparent !important;
+    }
+    ul > li {
+        line-height: 48px;
+        min-height: 48px;
+    }
+    ul > li md-input-container {
+        margin-top: 25px;
+        padding: 0 0 0 8px;
+    }
+    ul > li:hover {
+        background: #eee;
+    }
+    ul > li > a {
+        font-weight: 500;
+        display: block;
+        padding: 8px 24px;
+        color: #00796b;
+    }
+}
