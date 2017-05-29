@@ -46,7 +46,7 @@
                 </li>
                 <li>
                     <md-slide-toggle [color]="color" [(ngModel)]="language" (change)="changeLanguage(language)">
-                        EN
+                        {{ getCurrentLang() }}
                     </md-slide-toggle>
                 </li>
             </ul>

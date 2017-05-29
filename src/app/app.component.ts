@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   movieSearching: any[];
   isConnected = false;
   color = 'primary';
+  language = 'en';
 
   constructor(
     private movieService: MovieService,
@@ -23,6 +24,22 @@ export class AppComponent implements OnInit {
     private snackbar: MdSnackBar,
     private translate: TranslateService) {
 
+  }
+
+  ngOnInit() {
+    this.translate.setDefaultLang(this.language);
+    this.translate.use(this.language);
+
+    return this.authService.authenticated$
+      .take(1)
+      .do(authenticated => {
+        console.log('connected:', authenticated)
+        if (!authenticated) {
+          return this.isConnected = false;
+        } else {
+          return this.isConnected = false;
+        }
+      });
   }
 
   changeLanguage(value) {
@@ -47,19 +64,7 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/index']);
   }
 
-  ngOnInit() {
-    this.translate.setDefaultLang('en');
-    this.translate.use('fr');
-
-    return this.authService.authenticated$
-      .take(1)
-      .do(authenticated => {
-        console.log('connected:', authenticated)
-        if (!authenticated) {
-          return this.isConnected = false;
-        } else {
-          return this.isConnected = false;
-        }
-      });
+  getCurrentLang() {
+    return this.translate.currentLang;
   }
 }

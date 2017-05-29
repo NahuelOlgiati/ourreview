@@ -11,6 +11,8 @@ export class UserService {
 
   constructor(private db: AngularFireDatabase, private authService: AuthService) {
     this.authService.uid$.subscribe(uid => {
+      console.log('HOLA');
+      console.log(uid);
       if (uid) {
         this.uid = uid;
       }
@@ -18,6 +20,8 @@ export class UserService {
   }
 
   getMovies(category: string) {
+    console.log(this.uid);
+    console.log(category);
     return this.db.list(category + '/' + this.uid);
   }
 
