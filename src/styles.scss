@@ -1,3 +1,5 @@
+@import "./assets/styles/_var";
+@import "./assets/styles/theme.scss";
 @import "./assets/fonts/roboto.css";
 @import "./assets/material-icons/material-icons.css";
 
@@ -9,27 +11,18 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
-    background: #3f4c58;
+    background-color: $body-background-color;
 }
 a {
     cursor: pointer;
     text-decoration: none;
-    color: rgb(255, 87, 34);
-}
-button.app-icon-button {
-    padding: 20px;
-    cursor: pointer;
-    color: #fff;
-    border: none;
-    outline: none;
-    background: transparent;
+    color: $a-color;
 }
 h1, h2, h3, h4 {
   color: inherit;
     font-weight: 400;
     text-align: center;
 }
-
 iframe {
     width: 100%;
     max-height: 315px;

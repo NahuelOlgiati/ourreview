@@ -1,9 +1,19 @@
+@import "../assets/styles/_var";
+
 .active {
-    color: rgb(255, 87, 34) !important;
+    color: $app-active !important;
 }
 .app-content {
     margin: 1rem;
     text-align: center;
+}
+.app-icon-button {
+    padding: 20px;
+    cursor: pointer;
+    color: $app-app-icon-button;
+    border: none;
+    outline: none;
+    background: transparent;
 }
 #navigation {
     ul {
