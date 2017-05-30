@@ -13,12 +13,16 @@ import { SignUpComponent } from './signup/signup.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { WatchLaterComponent } from './watch-later/watch-later.component';
 
+import { ViewBookPageComponent } from './book/view-book-page';
+import { BookExistsGuard } from './book/guards/book-exists';
+
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'index', component: IndexComponent },
   { path: 'discover', component: DiscoverComponent },
   { path: 'favorites', component: FavoriteComponent, canActivate: [AuthGuard] },
   { path: 'movie/:id', component: MovieComponent },
+  { path: 'book/:id', component: ViewBookPageComponent, canActivate: [BookExistsGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'reset-password', component: ResetPasswordComponent },
   { path: 'search/:term', component: SearchComponent },
