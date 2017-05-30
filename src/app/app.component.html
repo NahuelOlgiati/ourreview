@@ -45,7 +45,7 @@
                         <md-icon>bug_report</md-icon> {{'menu.feed' | translate}}</a>
                 </li>
                 <li>
-                    <md-slide-toggle [color]="color" [(ngModel)]="language" (change)="changeLanguage(language)">
+                    <md-slide-toggle color="primary" [(ngModel)]="language" (change)="changeLanguage(language)">
                         {{ getCurrentLang() }}
                     </md-slide-toggle>
                 </li>

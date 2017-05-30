@@ -1,39 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { MdSnackBar } from '@angular/material';
+import { LanguageService } from './shared/service/language.service';
 import { AuthService } from './shared/security/auth.service';
-import { MovieService } from './shared/service/movie.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'our-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [MovieService, AuthService, MdSnackBar, TranslateService]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   movieSearching: any[];
   isConnected = false;
-  color = 'primary';
-  language = 'en';
-
   constructor(
-    private movieService: MovieService,
     private router: Router,
-    private authService: AuthService,
     private snackbar: MdSnackBar,
+    private languageService: LanguageService,
+    private authService: AuthService,
     private translate: TranslateService) {
-
   }
 
   ngOnInit() {
-    this.translate.setDefaultLang(this.language);
-    this.translate.use(this.language);
+    this.languageService.languageChanged.subscribe(language => this.translate.use(language));
+    this.changeLanguage(false);
+    this.translate.setDefaultLang(this.languageService.getLanguage());
 
     return this.authService.authenticated$
       .take(1)
       .do(authenticated => {
-        console.log('connected:', authenticated)
         if (!authenticated) {
           return this.isConnected = false;
         } else {
@@ -44,9 +39,9 @@ export class AppComponent implements OnInit {
 
   changeLanguage(value) {
     if (value) {
-      this.translate.use('en');
+      this.languageService.setLanguage('en');
     } else {
-      this.translate.use('fr');
+      this.languageService.setLanguage('es');
     }
   }
 

@@ -15,6 +15,7 @@ import 'hammerjs';
 import { AuthGuard } from './shared/security/auth.guard';
 import { AuthService } from './shared/security/auth.service';
 
+import { LanguageService } from './shared/service/language.service';
 import { UserService } from './shared/service/user.service';
 import { MovieService } from './shared/service/movie.service';
 
@@ -80,6 +81,7 @@ export function createTranslateLoader(http: Http) {
   providers: [
     AuthGuard,
     AuthService,
+    LanguageService,
     UserService,
     MovieService
   ],
