@@ -11,12 +11,12 @@ body {
     margin: 0;
     padding: 0;
     color: #fff;
-    background-color: $body-background-color;
+    background-color: $primary-lighter-color;
 }
 a {
     cursor: pointer;
     text-decoration: none;
-    color: $a-color;
+    color: $accent-color;
 }
 h1, h2, h3, h4 {
   color: inherit;
@@ -84,10 +84,10 @@ img {
     display: inline-block;
     padding: 0 10px;
     cursor: pointer;
-    color: #00796b;
+    color: $primary-darker-color;
 }
 .disabled {
-    color: #999;
+    color: $grey-darker-color;
 }
 
 

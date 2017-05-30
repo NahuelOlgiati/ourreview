@@ -1,7 +1,7 @@
 @import "../assets/styles/_var";
 
 .active {
-    color: $app-active !important;
+    color: $accent-darker-color !important;
 }
 .app-content {
     margin: 1rem;
@@ -10,7 +10,7 @@
 .app-icon-button {
     padding: 20px;
     cursor: pointer;
-    color: $app-app-icon-button;
+    color: $accent-darker-color;
     border: none;
     outline: none;
     background: transparent;
@@ -43,6 +43,6 @@
         font-weight: 500;
         display: block;
         padding: 8px 24px;
-        color: #00796b;
+        color: $primary-darker-color;
     }
 }

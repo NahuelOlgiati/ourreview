@@ -4,11 +4,16 @@
 
 $primary: mat-palette($mat-indigo);
 $accent:  mat-palette($mat-pink, A200, A100, A400);
-$warn:    mat-palette($mat-red);
+$warn:  mat-palette($mat-red);
 $theme: mat-light-theme($primary, $accent, $warn);
 
-$body-background-color: mat-color($primary, lighter);
-$a-color: mat-color($accent);
+$grey: mat-palette($mat-grey);
+$grey-darker-color: mat-color($grey, darker);
 
-$app-active: mat-color($accent, darker);
-$app-app-icon-button: mat-color($accent, darker);
+$primary-color: mat-color($primary);
+$primary-lighter-color: mat-color($primary, lighter);
+$primary-darker-color: mat-color($primary, darker);
+
+$accent-color: mat-color($accent);
+$accent-lighter-color: mat-color($accent, lighter);
+$accent-darker-color: mat-color($accent, darker);
