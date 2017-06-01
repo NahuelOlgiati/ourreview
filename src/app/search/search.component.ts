@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
         if (data.total_results > 0) {
           this.movies = data;
         } else {
-          this.movies == null;
+          this.movies = null;
           this.snackbar.open('No results found', 'hide', { duration: 10000 });
         }
       })
@@ -43,7 +43,7 @@ export class SearchComponent implements OnInit {
           this.totalPages = data.total_pages;
           this.setPage(1);
         } else {
-          this.movies == null;
+          this.movies = null;
         }
       })
   }

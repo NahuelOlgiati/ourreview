@@ -40,6 +40,7 @@ import { SignInComponent } from './signin/signin.component';
 import { SignUpComponent } from './signup/signup.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { WatchLaterComponent } from './watch-later/watch-later.component';
+import { PaginationComponent } from './shared/component/pagination/pagination.component';
 
 // Book
 import { FindBookPageComponent } from './book/find-book-page';
@@ -104,6 +105,7 @@ export function createTranslateLoader(http: Http) {
     SignUpComponent,
     UpcomingComponent,
     WatchLaterComponent,
+    PaginationComponent,
 
     FindBookPageComponent,
     BookSearchComponent,

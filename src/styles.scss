@@ -41,7 +41,6 @@ img {
 /*
 * Items
 */
-
 .items {
     display: flex;
     margin-top: -10px;
@@ -58,46 +57,6 @@ img {
     max-width: 100%;
     margin: 0;
     flex: inherit;
-}
-
-
-/*
-* Pagination
-*/
-.pagination {
-    margin: 0;
-    padding: 0;
-}
-.pagination li {
-    display: inline-block;
-    height: 30px;
-    text-align: center;
-    vertical-align: top;
-}
-.pagination li.disabled a {
-    cursor: default;
-    pointer-events: none;
-    color: #444;
-}
-.pagination li a {
-    font-size: 1.2rem;
-    display: inline-block;
-    padding: 0 10px;
-    cursor: pointer;
-    color: $primary-darker-color;
-}
-.disabled {
-    color: $grey-darker-color;
-}
-
-
-/*
-* Responsive
-*/
-@media screen and (max-width: 480px) {
-    .pagination {
-        -webkit-padding-start: 0 !important;
-    }
 }
 @media (min-width: 410px) {
     .items .item {
