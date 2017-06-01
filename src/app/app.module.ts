@@ -33,6 +33,7 @@ import { DiscoverComponent } from './discover/discover.component';
 import { DialogDeleteUser } from './profile/profile.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { MovieComponent } from './movie/movie.component';
+import { MovieItemComponent } from './movie/movie-item.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SearchComponent } from './search/search.component';
@@ -98,6 +99,7 @@ export function createTranslateLoader(http: Http) {
     DialogDeleteUser,
     FavoriteComponent,
     MovieComponent,
+    MovieItemComponent,
     ProfileComponent,
     ResetPasswordComponent,
     SearchComponent,

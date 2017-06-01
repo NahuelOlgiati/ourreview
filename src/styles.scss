@@ -58,6 +58,10 @@ img {
     margin: 0;
     flex: inherit;
 }
+.item img {
+    width: 100%;
+    margin: 0;
+}
 @media (min-width: 410px) {
     .items .item {
         max-width: calc(50% - 10px);

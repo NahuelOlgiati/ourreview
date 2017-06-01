@@ -7,7 +7,21 @@ import { AuthService } from '../shared/security/auth.service';
 @Component({
   selector: 'sign-in-component',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss']
+  styles: [`
+    button {
+        font-weight: normal !important;
+        margin: 10px 0 !important;
+    }
+    button img {
+        margin: 10px;
+    }
+    @media screen and (max-width: 480px) {
+        a {
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+  `]
 })
 export class SignInComponent implements OnInit {
 
