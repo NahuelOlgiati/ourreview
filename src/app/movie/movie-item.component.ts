@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Movie } from '../shared/model/movie';
 
 @Component({
@@ -9,7 +9,8 @@ import { Movie } from '../shared/model/movie';
       width: 100%;
       margin: 0;
     }
-  `]
+  `],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MovieItemComponent {
 
