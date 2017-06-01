@@ -8,7 +8,7 @@ import { MovieService } from '../shared/service/movie.service';
 export class DiscoverComponent implements OnInit {
   movies: any[];
   totalPages: number;
-  pager: any = {}
+  pager: any = {};
   currentPage: number;
 
   constructor(private movieService: MovieService) { }
