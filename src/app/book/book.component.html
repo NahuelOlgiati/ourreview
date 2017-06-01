@@ -1,0 +1,50 @@
+<md-card *ngIf="book">
+  <md-card-header>
+    <md-card-title>{{book.volumeInfo.title}}</md-card-title>
+    <md-card-subtitle>
+      <md-icon>date_range</md-icon> {{book.volumeInfo.publishDate | date}} |
+      <span *ngIf="book.volumeInfo.averageRating >= 5"> <md-icon class="md-green">thumb_up</md-icon> {{book.volumeInfo.averageRating}} | </span>
+      <span *ngIf="book.volumeInfo.averageRating < 5"> <md-icon class="md-red">thumb_down</md-icon> {{book.volumeInfo.averageRating}} | </span>
+      <!--
+      <div class="genre" *ngFor="let genre of book.genres; let i=index">
+        <span *ngIf="i < 3">{{genre.name}} </span>
+      </div>
+      -->
+      <button md-icon-button [mdMenuTriggerFor]="menu">
+                <md-icon>share</md-icon>
+            </button>
+      <md-menu #menu="mdMenu">
+        <a md-menu-item href="https://plus.google.com/share?url=https://hubbooks-a26fc.firebaseapp.com/book/{{book.id}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Google +
+                </a>
+        <a md-menu-item href="https://www.facebook.com/sharer/sharer.php?u=https://hubbooks-a26fc.firebaseapp.com/book/{{book.id}}">Facebook</a>
+        <a md-menu-item href="https://twitter.com/intent/tweet?text=Discovers the book {{book.volumeInfo.title}}%20on%20&url=https://hubbooks-a26fc.firebaseapp.com/book/{{book.id}}&hashtags=hubbooks, {{book.volumeInfo.title}}">Twitter</a>
+        <a md-menu-item href="mailto:?subject={{book.volumeInfo.title}} on Hubbooks&body=Discovers the book on https://hubbooks-a26fc.firebaseapp.com/book/{{book.id}}">Email</a>
+      </md-menu>
+    </md-card-subtitle>
+  </md-card-header>
+  <img [src]="book.volumeInfo.imageLinks.thumbnail" alt="poster book">
+  <md-card-content>
+    <p>{{book.volumeInfo.description}}</p>
+  </md-card-content>
+  <md-card-actions>
+    <div [hidden]="!isConnected">
+      <button md-button (click)="saveBook(book, 'BookLater')"><md-icon class="md-teal">watch_later</md-icon> {{'book.watch' | translate}}</button>
+      <button md-button (click)="saveBook(book, 'FavoriteBook')"><md-icon class="md-yellow">star</md-icon> {{'book.star' | translate}}</button>
+    </div>
+  </md-card-actions>
+</md-card>
+
+<!--
+<h1 *ngIf="similarBooks">{{'book.title' | translate}}</h1>
+<div class="items" *ngIf="similarBooks">
+  <div class="item" *ngFor="let book of similarBooks.results; let i=index">
+    <div *ngIf=" i < 12">
+      <a [routerLink]="['/book', book.id]">
+        <img *ngIf="book.poster_path" src="https://image.tmdb.org/t/p/w500/{{book.poster_path}}" alt="poster book" width="200">
+        <img *ngIf="!book.poster_path" src="http://ddbu.billiardport.com/img/posters/no_poster_available.jpg" alt="No poster available"
+          width="200">
+        <p>{{book.title}}</p>
+      </a>
+    </div>
+  </div>
+-->

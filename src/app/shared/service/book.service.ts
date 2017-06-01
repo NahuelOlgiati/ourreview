@@ -1,26 +1,24 @@
-import 'rxjs/add/operator/map';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Book } from '../model/book';
-
+import { BookResponse, Book } from '../model';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BookService {
 
   private url = 'https://www.googleapis.com/books/v1/volumes';
+  private maxResults = 20;
 
   constructor(private http: Http) { }
 
-  getSearch(title: string): Observable<Book[]> {
-    return this.http.get(this.url + '?q=' + title)
-      .map(res => res.json().items || []);
+  getSearch(title: string, page: number): Observable<BookResponse> {
+    return this.http.get(this.url + '?q=' + title + '&maxResults=' + this.maxResults + '&startIndex=' + page * this.maxResults)
+      .map((res: Response) => res.json());
   }
 
-  get(id: string): Observable<Book> {
-    console.log('HOLAAAA');
-    console.log(id);
+  getDetails(id: string): Observable<Book> {
     return this.http.get(this.url + '/' + id)
-      .map(res => res.json());
+      .map((res: Response) => res.json());
   }
 }

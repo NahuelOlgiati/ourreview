@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Util } from '../shared/util';
+import { MovieResponse, Pager } from '../shared/model';
 import { MovieService } from '../shared/service/movie.service';
 
 @Component({
@@ -6,9 +8,9 @@ import { MovieService } from '../shared/service/movie.service';
   templateUrl: './upcoming.component.html'
 })
 export class UpcomingComponent implements OnInit {
-  movies: any[];
+  movies: MovieResponse;
   totalPages: number;
-  pager: any = {};
+  pager: Pager = <Pager>{};
   currentPage: number;
 
   constructor(private movieService: MovieService) { }
@@ -17,7 +19,7 @@ export class UpcomingComponent implements OnInit {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
-    this.pager = this.movieService.getPager(this.totalPages, page);
+    this.pager = Util.getPager(this.totalPages, page);
     this.currentPage = this.pager.currentPage;
     this.movieService.getUpComing(this.currentPage).subscribe(response => {
       this.movies = response;

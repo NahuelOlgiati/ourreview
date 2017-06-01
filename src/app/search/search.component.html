@@ -2,15 +2,15 @@
 
   <md-tab label="Movies">
     <h1>Movies</h1>
-    <div class="items" *ngIf="movies">
-      <div class="item" *ngFor="let movie of movies.results">
+    <div class="items" *ngIf="movieReponse">
+      <div class="item" *ngFor="let movie of movieReponse.results">
         <movie-item-component [movie]="movie"></movie-item-component>
       </div>
       <div class="item">
-        <our-pagination align="center" [total]="pager.totalPages" (onPage)="setPage($event)"></our-pagination>
+        <our-pagination align="center" [total]="moviePager.totalPages" (onPage)="setMoviePage($event)"></our-pagination>
       </div>
     </div>
-    <div *ngIf="!movies">
+    <div *ngIf="!movieReponse">
       <h1>{{'search.title' | translate}}
         <md-icon>sentiment_very_dissatisfied</md-icon>
       </h1>
@@ -19,7 +19,20 @@
 
   <md-tab label="Books">
     <h1>Books</h1>
-    <bc-find-book-page></bc-find-book-page>
+    <!--<bc-find-book-page></bc-find-book-page>-->
+    <div class="items" *ngIf="bookReponse">
+      <div class="item" *ngFor="let book of bookReponse.items">
+        <book-item-component [book]="book"></book-item-component>
+      </div>
+      <div class="item">
+        <our-pagination align="center" [total]="bookPager.totalPages" (onPage)="setBookPage($event)"></our-pagination>
+      </div>
+    </div>
+    <div *ngIf="!bookReponse">
+      <h1>{{'search.title' | translate}}
+        <md-icon>sentiment_very_dissatisfied</md-icon>
+      </h1>
+    </div>
   </md-tab>
 
   <md-tab label="Albums">

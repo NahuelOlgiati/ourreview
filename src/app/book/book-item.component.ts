@@ -1,9 +1,9 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Movie } from '../shared/model';
+import { Book } from '../shared/model';
 
 @Component({
-  selector: 'movie-item-component',
-  templateUrl: './movie-item.component.html',
+  selector: 'book-item-component',
+  templateUrl: './book-item.component.html',
   styles: [`
     img {
       width: 100%;
@@ -12,9 +12,9 @@ import { Movie } from '../shared/model';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MovieItemComponent {
+export class BookItemComponent {
 
-  @Input() movie: Movie;
+  @Input() book: Book;
 
   constructor() { }
 }

@@ -6,14 +6,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
-import { StoreModule } from '@ngrx/store';
-import { RouterStoreModule } from '@ngrx/router-store';
-import { reducer } from './book/reducers';
-import { EffectsModule } from '@ngrx/effects';
 
 import { AppRouterModule } from './app-router.module';
 
@@ -34,6 +32,8 @@ import { DialogDeleteUser } from './profile/profile.component';
 import { FavoriteComponent } from './favorite/favorite.component';
 import { MovieComponent } from './movie/movie.component';
 import { MovieItemComponent } from './movie/movie-item.component';
+import { BookComponent } from './book/book.component';
+import { BookItemComponent } from './book/book-item.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SearchComponent } from './search/search.component';
@@ -42,24 +42,6 @@ import { SignUpComponent } from './signup/signup.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { WatchLaterComponent } from './watch-later/watch-later.component';
 import { PaginationComponent } from './shared/component/pagination/pagination.component';
-
-// Book
-import { FindBookPageComponent } from './book/find-book-page';
-import { BookSearchComponent } from './book/book-search';
-import { BookPreviewListComponent } from './book/book-preview-list';
-import { BookPreviewComponent } from './book/book-preview';
-import { BookAuthorsComponent } from './book/book-authors';
-import { EllipsisPipe } from './book/pipes/ellipsis';
-import { AddCommasPipe } from './book/pipes/add-commas';
-import { BookEffect } from './book/effects/book.effect';
-import { CollectionEffect } from './book/effects/collection.effect';
-import { BookExistsGuard } from './book/guards/book-exists';
-import { ViewBookPageComponent } from './book/view-book-page';
-import { SelectedBookPageComponent } from './book/selected-book-page';
-import { BookDetailComponent } from './book/book-detail';
-
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { environment } from '../environments/environment';
 
@@ -85,12 +67,7 @@ export function createTranslateLoader(http: Http) {
     AppRouterModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
-
-    StoreModule.provideStore(reducer),
-    RouterStoreModule.connectRouter(),
-    EffectsModule.run(BookEffect),
-    EffectsModule.run(CollectionEffect),
+    AngularFireAuthModule
   ],
   declarations: [
     AppComponent,
@@ -100,6 +77,8 @@ export function createTranslateLoader(http: Http) {
     FavoriteComponent,
     MovieComponent,
     MovieItemComponent,
+    BookComponent,
+    BookItemComponent,
     ProfileComponent,
     ResetPasswordComponent,
     SearchComponent,
@@ -107,18 +86,7 @@ export function createTranslateLoader(http: Http) {
     SignUpComponent,
     UpcomingComponent,
     WatchLaterComponent,
-    PaginationComponent,
-
-    FindBookPageComponent,
-    BookSearchComponent,
-    BookPreviewListComponent,
-    BookPreviewComponent,
-    BookAuthorsComponent,
-    EllipsisPipe,
-    AddCommasPipe,
-    ViewBookPageComponent,
-    SelectedBookPageComponent,
-    BookDetailComponent
+    PaginationComponent
   ],
   providers: [
     AuthGuard,
@@ -126,9 +94,7 @@ export function createTranslateLoader(http: Http) {
     LanguageService,
     UserService,
     MovieService,
-    BookService,
-
-    BookExistsGuard
+    BookService
   ],
   bootstrap: [AppComponent],
   entryComponents: [

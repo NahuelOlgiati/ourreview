@@ -13,7 +13,8 @@
       "node_modules/@types"
     ],
     "types": [
-      "firebase"
+      "firebase",
+      "hammerjs"
     ],
     "lib": [
       "es2016",
