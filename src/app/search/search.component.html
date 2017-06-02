@@ -37,7 +37,19 @@
 
   <md-tab label="Albums">
     <h1>Albums</h1>
-    <p>...</p>
+    <div class="items" *ngIf="musicReponse">
+      <div class="item" *ngFor="let music of musicReponse.tracks.items">
+        <music-item-component [music]="music"></music-item-component>
+      </div>
+      <div class="item">
+        <our-pagination align="center" [total]="musicPager.totalPages" (onPage)="setMusicPage($event)"></our-pagination>
+      </div>
+    </div>
+    <div *ngIf="!musicReponse">
+      <h1>{{'search.title' | translate}}
+        <md-icon>sentiment_very_dissatisfied</md-icon>
+      </h1>
+    </div>
   </md-tab>
 
 </md-tab-group>

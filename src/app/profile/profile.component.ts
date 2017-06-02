@@ -22,6 +22,17 @@ export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService, private userService: UserService, private snackbar: MdSnackBar, private router: Router, private dialog: MdDialog) { }
 
+  ngOnInit() {
+    this.authService.readUser().subscribe(authData => {
+      if (authData) {
+        this.displayName = authData.displayName;
+        this.email = authData.email;
+        this.emailVerified = authData.emailVerified;
+        this.photoURL = authData.photoURL;
+      }
+    });
+  }
+
   confirmDialog() {
     this.dialogRef = this.dialog.open(DialogDeleteUser, {
       disableClose: true
@@ -36,6 +47,7 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+
   deleteAccount() {
     this.userService.deleteDatafromUser();
     this.authService.deleteUser((error) => {
@@ -46,8 +58,9 @@ export class ProfileComponent implements OnInit {
         this.snackbar.open('Good bye ! We hope that our site has pleased you.', '', { duration: 5000 });
         this.router.navigate(['/index']);
       }
-    })
+    });
   }
+
   onSubmit(formData) {
     if (formData.valid) {
       this.authService.updateUser(formData, (error) => {
@@ -58,19 +71,8 @@ export class ProfileComponent implements OnInit {
           this.snackbar.open('Success ! Your modifications was been applicated', '', { duration: 5000 });
           this.router.navigate(['/profile']);
         }
-      })
+      });
     }
-  }
-
-  ngOnInit() {
-    this.authService.readUser().subscribe(authData => {
-      if (authData) {
-        this.displayName = authData.displayName;
-        this.email = authData.email;
-        this.emailVerified = authData.emailVerified;
-        this.photoURL = authData.photoURL;
-      }
-    })
   }
 }
 

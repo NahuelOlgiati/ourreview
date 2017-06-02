@@ -24,6 +24,7 @@ import { LanguageService } from './shared/service/language.service';
 import { UserService } from './shared/service/user.service';
 import { MovieService } from './shared/service/movie.service';
 import { BookService } from './shared/service/book.service';
+import { MusicService } from './shared/service/music.service';
 
 import { AppComponent } from './app.component';
 import { IndexComponent } from './index/index.component';
@@ -34,6 +35,8 @@ import { MovieComponent } from './movie/movie.component';
 import { MovieItemComponent } from './movie/movie-item.component';
 import { BookComponent } from './book/book.component';
 import { BookItemComponent } from './book/book-item.component';
+import { MusicComponent } from './music/music.component';
+import { MusicItemComponent } from './music/music-item.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SearchComponent } from './search/search.component';
@@ -79,6 +82,8 @@ export function createTranslateLoader(http: Http) {
     MovieItemComponent,
     BookComponent,
     BookItemComponent,
+    MusicComponent,
+    MusicItemComponent,
     ProfileComponent,
     ResetPasswordComponent,
     SearchComponent,
@@ -94,7 +99,15 @@ export function createTranslateLoader(http: Http) {
     LanguageService,
     UserService,
     MovieService,
-    BookService
+    BookService,
+    MusicService,
+    {
+      provide: 'SpotifyConfig', useValue: {
+        clientId: 'b7b972696c034f8e98eb7f5311c95ea1',
+        redirectUri: 'http://localhost:4200/index',
+        scope: 'user-follow-modify user-follow-read playlist-read-private playlist-read-collaborative playlist-modify-public playlist-modify-private user-library-read user-library-modify user-read-private user-top-read user-read-recently-played'
+      }
+    }
   ],
   bootstrap: [AppComponent],
   entryComponents: [
