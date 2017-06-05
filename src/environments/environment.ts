@@ -12,5 +12,20 @@ export const environment = {
     projectId: 'ourreview-50428',
     storageBucket: 'ourreview-50428.appspot.com',
     messagingSenderId: '157165469248'
+  },
+  theMovieDB: {
+    url: 'https://api.themoviedb.org/3/',
+    partner: '431bc17da732dfb3be082e58f7a5cf27'
+  },
+  googleBooks: {
+    url: 'https://www.googleapis.com/books/v1/volumes',
+    maxResults: 20
+  },
+  spotify: {
+    client_id: 'b7b972696c034f8e98eb7f5311c95ea1',
+    client_secret: 'c4b68ce29a2447b4a1c964d3bd71074a',
+    url: 'https://api.spotify.com/v1',
+    authorizationTokenUrl: 'https://accounts.spotify.com/api/token',
+    maxResults: 20
   }
 };

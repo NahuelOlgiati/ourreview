@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AuthService } from '../security/auth.service';
-import { Movie, Book } from '../../shared/model';
+import { Movie, Book, Album } from '../../shared/model';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -65,6 +65,31 @@ export class UserService {
           'ratingsCount': book.volumeInfo.ratingsCount,
           'publishDate': book.volumeInfo.publishDate,
           'thumbnail': (book.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : ''
+        })
+          .then(success => callback())
+          .catch(error => callback(error));
+      }
+    });
+  }
+
+  setAlbums(album: Album, category: string, callback: any) {
+    return this.db.list(category + '/' + this.uid).subscribe(data => {
+      let exists = false;
+      for (const x of data) {
+        if (x.id == album.id) {
+          exists = true;
+          callback('The album is already recorded');
+          break;
+        }
+      }
+      if (exists == false) {
+        return this.db.list(category + '/' + this.uid).push({
+          'id': album.id,
+          'title': album.name,
+          'subtitle': album.artists[0].name /*,
+          'ratingsCount': album..ratingsCount,
+          'publishDate': album.volumeInfo.publishDate,
+          'thumbnail': (album.volumeInfo.imageLinks) ? book.volumeInfo.imageLinks.thumbnail : ''*/
         })
           .then(success => callback())
           .catch(error => callback(error));

@@ -3,15 +3,15 @@ import { Component, OnInit } from '@angular/core';
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
-import { BookResponse, Music } from '../shared/model';
+import { BookResponse, Album } from '../shared/model';
 import { AuthService } from '../shared/security/auth.service';
 import { UserService } from '../shared/service/user.service';
-import { MusicService } from '../shared/service/music.service';
+import { AlbumService } from '../shared/service/album.service';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
-  selector: 'music-component',
-  templateUrl: './music.component.html',
+  selector: 'album-component',
+  templateUrl: './album.component.html',
   styles: [`
     .genre {
       display: inline-block;
@@ -26,24 +26,24 @@ import 'rxjs/add/operator/switchMap';
     }
   `]
 })
-export class MusicComponent implements OnInit {
-  music: Music;
-  musicVideo: any[];
-  //similarBooks: BookResponse;
+export class AlbumComponent implements OnInit {
+  album: Album;
+  albumVideo: any[];
+  //similarAlbums: AlbumResponse;
   error: string;
   isConnected = false;
   baseUrl = 'https://www.youtube.com/embed/';
   url: any;
 
-  constructor(private sanitizer: DomSanitizer, private authService: AuthService, private userService: UserService, private musicService: MusicService, private route: ActivatedRoute, private location: Location, private snackbar: MdSnackBar) { }
+  constructor(private sanitizer: DomSanitizer, private authService: AuthService, private userService: UserService, private albumService: AlbumService, private route: ActivatedRoute, private location: Location, private snackbar: MdSnackBar) { }
 
-  saveBook(music: any, category: string) {
-    this.userService.setBooks(music, category, (error) => {
+  saveBook(album: any, category: string) {
+    this.userService.setAlbums(album, category, (error) => {
       if (error) {
         this.error = error;
         this.snackbar.open(this.error, 'hide', { duration: 10000 });
       } else {
-        this.snackbar.open('Your music was been save', '', { duration: 5000 });
+        this.snackbar.open('Your album was been save', '', { duration: 5000 });
       }
     });
   }
@@ -55,16 +55,16 @@ export class MusicComponent implements OnInit {
   ngOnInit() {
 
     this.route.params
-      .switchMap((params: Params) => this.musicService.getDetails(params['id']))
+      .switchMap((params: Params) => this.albumService.getDetails(params['id']))
       .subscribe(response => {
-        this.music = response;
+        this.album = response;
       });
 
     /*
         this.route.params
-          .switchMap((params: Params) => this.bookService.getSimilarBooks(+params['id']))
+          .switchMap((params: Params) => this.albumService.getSimilarAlbums(+params['id']))
           .subscribe(response => {
-            this.similarBooks = response;
+            this.similarAlbums = response;
           })
           */
 

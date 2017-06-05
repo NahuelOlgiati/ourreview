@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MdSnackBar, MdSnackBarConfig } from '@angular/material';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Util } from '../shared/util';
-import { MovieResponse, BookResponse, MusicResponse, Pager } from '../shared/model';
+import { MovieResponse, BookResponse, AlbumResponse, Pager } from '../shared/model';
 import { MovieService } from '../shared/service/movie.service';
 import { BookService } from '../shared/service/book.service';
-import { MusicService } from '../shared/service/music.service';
+import { AlbumService } from '../shared/service/album.service';
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -24,12 +24,12 @@ export class SearchComponent implements OnInit {
   bookPager: Pager = <Pager>{};
   bookCurrentPage: number;
 
-  musicReponse: MusicResponse;
-  musicTotalPages: number;
-  musicPager: Pager = <Pager>{};
-  musicCurrentPage: number;
+  albumReponse: AlbumResponse;
+  albumTotalPages: number;
+  albumPager: Pager = <Pager>{};
+  albumCurrentPage: number;
 
-  constructor(private movieService: MovieService, private bookService: BookService, private musicService: MusicService, private route: ActivatedRoute, private snackbar: MdSnackBar) { }
+  constructor(private movieService: MovieService, private bookService: BookService, private albumService: AlbumService, private route: ActivatedRoute, private snackbar: MdSnackBar) { }
 
   ngOnInit() {
     this.route.params
@@ -55,13 +55,13 @@ export class SearchComponent implements OnInit {
       });
 
     this.route.params
-      .switchMap((params: Params) => this.musicService.getSearch(params['term'], 1))
+      .switchMap((params: Params) => this.albumService.getSearch(params['term'], 1))
       .subscribe(data => {
-        if (data.tracks.total > 0) {
-          this.musicTotalPages = data.tracks.total;
-          this.setMusicPage(1);
+        if (data.albums.total > 0) {
+          this.albumTotalPages = data.albums.total;
+          this.setAlbumPage(1);
         } else {
-          this.musicReponse = null;
+          this.albumReponse = null;
         }
       });
   }
@@ -102,19 +102,19 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  setMusicPage(page: number) {
-    if (page < 1 || page > this.musicPager.totalPages) {
+  setAlbumPage(page: number) {
+    if (page < 1 || page > this.albumPager.totalPages) {
       return;
     }
-    this.musicPager = Util.getPager(this.musicTotalPages, page);
-    this.musicCurrentPage = this.musicPager.currentPage;
+    this.albumPager = Util.getPager(this.albumTotalPages, page);
+    this.albumCurrentPage = this.albumPager.currentPage;
     this.route.params
-      .switchMap((params: Params) => this.musicService.getSearch(params['term'], this.musicCurrentPage))
+      .switchMap((params: Params) => this.albumService.getSearch(params['term'], this.albumCurrentPage))
       .subscribe(data => {
-        if (data.tracks.total > 0) {
-          this.musicReponse = data;
+        if (data.albums.total > 0) {
+          this.albumReponse = data;
         } else {
-          this.musicReponse = null;
+          this.albumReponse = null;
           this.snackbar.open('No results found', 'hide', { duration: 10000 });
         }
       });

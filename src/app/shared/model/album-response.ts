@@ -1,9 +1,9 @@
-import { Music } from './music';
+import { Album } from './album';
 
-export interface MusicResponse {
-  tracks: {
+export interface AlbumResponse {
+  albums: {
     href: string;
-    items: Music[];
+    items: Album[];
     limit: number;
     next: string;
     offset: number;

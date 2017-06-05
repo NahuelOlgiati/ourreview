@@ -1,6 +1,0 @@
-<a [routerLink]="['/music', music.id]">
-  <img *ngIf="music.album.images" [src]="music.album.images[0].url" alt="poster music" width="200">
-  <img *ngIf="!music.album.images" src="http://ddbu.billiardport.com/img/posters/no_poster_available.jpg" width="200">
-  <p>{{music.album.name}}</p>
-</a>
-<p>{{music.artists[0].name}}</p>

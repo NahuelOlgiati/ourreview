@@ -1,62 +1,74 @@
 {
-    "common": {},
-    "menu": {
-        "search": "Buscar",
-        "now": "Se está viendo",
-        "coming": "Próximamente",
-        "discover": "Descubrir",
-        "watch": "Tengo que ver esto",
-        "best": "Lo mejor",
-        "profile": "Perfil",
-        "signIn": "Inicio Sesión",
-        "signOut": "Cerrar Sesión",
-        "feed": "Feedbacks"
-    },
-    "movie": {
-        "watch": "Tengo que ver esto",
-        "star": "Destacado",
-        "trailer": "Trailer",
-        "title": "Recomendadas"
-    },
-    "profile": {
-        "title": "Hola",
-        "verified": "Email Verificado",
-        "btn-send": "Emviar",
-        "subtitle": "Borrar tu cuenta?",
-        "link": "Borrar",
-        "title-over": "Estas seguro?",
-        "btn-yes": "Si",
-        "btn-no": "No"
-    },
-    "reset": {
-        "title": "Resetear password",
-        "mail": "Email",
-        "btn-send": "Enviar",
-        "link": "Cancelar"
-    },
-    "search": {
-        "title": "Sin resultados"
-    },
-    "signIn": {
-        "title": "Inicio Sesión",
-        "mail": "Email",
-        "mdp": "Password",
-        "btn-send": "Enviar",
-        "subtitle": "O",
-        "btn-facebook": "Usar mi cuenta de Facebook",
-        "btn-google": "Usar mi cuenta de Google",
-        "btn-twitter": "Usar mi cuenta de Twitter",
-        "subtitle1": "Y ...",
-        "link": "No tenes una cuenta?",
-        "link1": "Olvidaste tu password?"
-    },
-    "signUp": {
-        "title": "Iniciar sesión con",
-        "username": "Usuario",
-        "mail": "Email",
-        "mdp": "Password",
-        "btn-send": "Enviar",
-        "subtitle": "O",
-        "link": "Ya tenes una cuenta?"
-    }
+  "common": {},
+  "menu": {
+    "search": "Buscar",
+    "now": "Se está viendo",
+    "coming": "Próximamente",
+    "discover": "Descubrir",
+    "watch": "Tengo que ver esto",
+    "best": "Lo mejor",
+    "profile": "Perfil",
+    "signIn": "Inicio Sesión",
+    "signOut": "Cerrar Sesión",
+    "feed": "Feedbacks"
+  },
+  "movie": {
+    "watch": "Tengo que ver esto",
+    "star": "Destacado",
+    "trailer": "Trailer",
+    "title": "Recomendadas"
+  },
+  "book": {
+    "watch": "Tengo que ver esto",
+    "star": "Destacado",
+    "trailer": "Trailer",
+    "title": "Recomendadas"
+  },
+  "album": {
+    "watch": "Tengo que ver esto",
+    "star": "Destacado",
+    "trailer": "Trailer",
+    "title": "Recomendadas"
+  },
+  "profile": {
+    "title": "Hola",
+    "verified": "Email Verificado",
+    "btn-send": "Emviar",
+    "subtitle": "Borrar tu cuenta?",
+    "link": "Borrar",
+    "title-over": "Estas seguro?",
+    "btn-yes": "Si",
+    "btn-no": "No"
+  },
+  "reset": {
+    "title": "Resetear password",
+    "mail": "Email",
+    "btn-send": "Enviar",
+    "link": "Cancelar"
+  },
+  "search": {
+    "title": "Sin resultados"
+  },
+  "signIn": {
+    "title": "Inicio Sesión",
+    "mail": "Email",
+    "mdp": "Password",
+    "btn-send": "Enviar",
+    "subtitle": "O",
+    "btn-facebook": "Usar mi cuenta de Facebook",
+    "btn-google": "Usar mi cuenta de Google",
+    "btn-twitter": "Usar mi cuenta de Twitter",
+    "subtitle1": "Y ...",
+    "link": "No tenes una cuenta?",
+    "link1": "Olvidaste tu password?"
+  },
+  "signUp": {
+    "title": "Iniciar sesión con",
+    "username": "Usuario",
+    "mail": "Email",
+    "mdp": "Password",
+    "btn-send": "Enviar",
+    "subtitle": "O",
+    "link": "Ya tenes una cuenta?"
+  }
 }

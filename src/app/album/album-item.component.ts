@@ -1,9 +1,9 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
-import { Music } from '../shared/model';
+import { Album } from '../shared/model';
 
 @Component({
-  selector: 'music-item-component',
-  templateUrl: './music-item.component.html',
+  selector: 'album-item-component',
+  templateUrl: './album-item.component.html',
   styles: [`
     img {
       width: 100%;
@@ -12,9 +12,9 @@ import { Music } from '../shared/model';
   `],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MusicItemComponent {
+export class AlbumItemComponent {
 
-  @Input() music: Music;
+  @Input() album: Album;
 
   constructor() { }
 }

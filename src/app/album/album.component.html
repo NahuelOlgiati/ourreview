@@ -1,0 +1,51 @@
+<md-card *ngIf="album">
+  <md-card-header>
+    <md-card-title>{{album.name}}</md-card-title>
+    <md-card-subtitle>
+      <!--<md-icon>date_range</md-icon> {{album.album. | date}} |
+      <span *ngIf="album.volumeInfo.averageRating >= 5"> <md-icon class="md-green">thumb_up</md-icon> {{album.volumeInfo.averageRating}} | </span>
+      <span *ngIf="album.volumeInfo.averageRating < 5"> <md-icon class="md-red">thumb_down</md-icon> {{album.volumeInfo.averageRating}} | </span>
+      -->
+      <!--
+      <div class="genre" *ngFor="let genre of album.genres; let i=index">
+        <span *ngIf="i < 3">{{genre.name}} </span>
+      </div>
+      -->
+      <button md-icon-button [mdMenuTriggerFor]="menu">
+                <md-icon>share</md-icon>
+            </button>
+      <md-menu #menu="mdMenu">
+        <a md-menu-item href="https://plus.google.com/share?url=https://hubbooks-a26fc.firebaseapp.com/album/{{album.id}}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;">Google +
+                </a>
+        <a md-menu-item href="https://www.facebook.com/sharer/sharer.php?u=https://hubbooks-a26fc.firebaseapp.com/album/{{album.id}}">Facebook</a>
+        <a md-menu-item href="https://twitter.com/intent/tweet?text=Discovers the album {{album.name}}%20on%20&url=https://hubbooks-a26fc.firebaseapp.com/album/{{album.id}}&hashtags=hubbooks, {{album.name}}">Twitter</a>
+        <a md-menu-item href="mailto:?subject={{album.name}} on Hubbooks&body=Discovers the album on https://hubbooks-a26fc.firebaseapp.com/album/{{album.id}}">Email</a>
+      </md-menu>
+    </md-card-subtitle>
+  </md-card-header>
+  <img [src]="album.images[0].url" alt="poster album">
+  <md-card-content>
+    <p>{{album.type}}</p>
+  </md-card-content>
+  <md-card-actions>
+    <div [hidden]="!isConnected">
+      <button md-button (click)="saveBook(album, 'BookLater')"><md-icon class="md-teal">watch_later</md-icon> {{'album.watch' | translate}}</button>
+      <button md-button (click)="saveBook(album, 'FavoriteBook')"><md-icon class="md-yellow">star</md-icon> {{'album.star' | translate}}</button>
+    </div>
+  </md-card-actions>
+</md-card>
+
+<!--
+<h1 *ngIf="similarBooks">{{'album.title' | translate}}</h1>
+<div class="items" *ngIf="similarBooks">
+  <div class="item" *ngFor="let album of similarBooks.results; let i=index">
+    <div *ngIf=" i < 12">
+      <a [routerLink]="['/album', album.id]">
+        <img *ngIf="album.poster_path" src="https://image.tmdb.org/t/p/w500/{{album.poster_path}}" alt="poster album" width="200">
+        <img *ngIf="!album.poster_path" src="http://ddbu.billiardport.com/img/posters/no_poster_available.jpg" alt="No poster available"
+          width="200">
+        <p>{{album.title}}</p>
+      </a>
+    </div>
+  </div>
+-->
