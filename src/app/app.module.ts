@@ -13,6 +13,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+import { DragulaModule } from 'ng2-dragula';
+import { DragulaDemoModule } from './dragula-demo/dragula-demo.module';
+
 import { AppRouterModule } from './app-router.module';
 
 import 'hammerjs';
@@ -70,7 +73,9 @@ export function createTranslateLoader(http: Http) {
     AppRouterModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    DragulaModule,
+    DragulaDemoModule
   ],
   declarations: [
     AppComponent,

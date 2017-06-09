@@ -14,6 +14,7 @@ import { SignInComponent } from './signin/signin.component';
 import { SignUpComponent } from './signup/signup.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
 import { WatchLaterComponent } from './watch-later/watch-later.component';
+import { DragulaDemoComponent } from './dragula-demo/dragula-demo.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'upcoming', component: UpcomingComponent },
-  { path: 'watch-later', component: WatchLaterComponent, canActivate: [AuthGuard] }
+  { path: 'watch-later', component: WatchLaterComponent, canActivate: [AuthGuard] },
+  { path: 'dragula-demo', component: DragulaDemoComponent }
 ];
 
 export const AppRouterModule: ModuleWithProviders = RouterModule.forRoot(routes);
