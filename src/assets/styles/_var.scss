@@ -17,3 +17,6 @@ $primary-darker-color: mat-color($primary, darker);
 $accent-color: mat-color($accent);
 $accent-lighter-color: mat-color($accent, lighter);
 $accent-darker-color: mat-color($accent, darker);
+
+$mat-body-font-size-base: rem(1.4) !default;
+$mat-font-family: Roboto, 'Helvetica Neue', sans-serif !default;
